@@ -2,6 +2,7 @@
 //THE TEST SERVER IS RUNNING ON LOCALHOST:3000//
 ////////////////////////////////////////////////
 
+
 // PROBLEM 1
 /*
     In the index.html file in this folder there is a button with an id of 'say-hello-button'!
@@ -65,6 +66,7 @@ const sayHello = () => {
 // DO NOT EDIT FUNCTION
 
 // CODE HERE
+sayHelloButton.addEventListener("click", sayHello)
 
 
 // PROBLEM 5 
@@ -79,7 +81,11 @@ const sayHello = () => {
 */ 
 
 const ohMy = () => {
-    // YOUR CODE HERE
+//     // YOUR CODE HERE
+  axios
+    .get('http://localhost:3000/animals')
+    .then(response => {console.log(response.data)})
+    .catch(error => {console.log(error)})
 }
 
 document.getElementById('animals-button').addEventListener('click', ohMy)
@@ -100,7 +106,19 @@ document.getElementById('animals-button').addEventListener('click', ohMy)
 
 const repeatMyParam = () => {
     //YOUR CODE HERE
+    axios
+    .get('http://localhost:3000/repeat/{howdy pardner}')
+    .then(response => {console.log(response.data)})
+    .catch(error => {console.log(error)})
+
+    //Problem 7 Code
+    let repeatElement = document.getElementById("repeat-text")
+
+    repeatElement.textContent = response.data
+
 }
+
+document.getElementById("repeat-button").addEventListener("click", repeatMyParam)
 
 // PROBLEM 7
 /*
@@ -123,6 +141,7 @@ const repeatMyParam = () => {
 */
 
 // CODE HERE
+
 
 
 
