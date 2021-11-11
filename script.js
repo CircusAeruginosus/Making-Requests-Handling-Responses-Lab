@@ -2,7 +2,6 @@
 //THE TEST SERVER IS RUNNING ON LOCALHOST:3000//
 ////////////////////////////////////////////////
 
-
 // PROBLEM 1
 /*
     In the index.html file in this folder there is a button with an id of 'say-hello-button'!
@@ -11,8 +10,7 @@
 */
 
 // CODE HERE
-let sayHelloButton = document.querySelector("#say-hello-button")
-
+let sayHelloButton = document.querySelector("#say-hello-button");
 
 // PROBLEM 2
 /*
@@ -23,11 +21,11 @@ let sayHelloButton = document.querySelector("#say-hello-button")
 
 // CODE HERE
 function changeBackgroundColor() {
-    sayHelloButton.style.backgroundColor = "black"
-    sayHelloButton.style.color = "white"
+  sayHelloButton.style.backgroundColor = "black";
+  sayHelloButton.style.color = "white";
 }
 
-sayHelloButton.addEventListener("mouseover", changeBackgroundColor)
+sayHelloButton.addEventListener("mouseover", changeBackgroundColor);
 
 // PROBLEM 3
 /*
@@ -40,12 +38,11 @@ sayHelloButton.addEventListener("mouseover", changeBackgroundColor)
 
 // CODE HERE
 function changeBack() {
-    sayHelloButton.style.backgroundColor = "#EFEFEF"
-    sayHelloButton.style.color = "black"
+  sayHelloButton.style.backgroundColor = "#EFEFEF";
+  sayHelloButton.style.color = "black";
 }
 
-sayHelloButton.addEventListener("mouseout", changeBack)
-
+sayHelloButton.addEventListener("mouseout", changeBack);
 
 // PROBLEM 4
 /*
@@ -56,20 +53,19 @@ sayHelloButton.addEventListener("mouseout", changeBack)
 
 // DO NOT EDIT FUNCTION
 const sayHello = () => {
-    axios.get('http://localhost:3000/say-hello').then((res) => {
-        let helloText = document.getElementById('hello-text');
-        helloText.style.display = 'block';
-        helloText.style.backgroundColor = 'green';
-        helloText.textContent = res.data;
-    })
-}
+  axios.get("http://localhost:3000/say-hello").then((res) => {
+    let helloText = document.getElementById("hello-text");
+    helloText.style.display = "block";
+    helloText.style.backgroundColor = "green";
+    helloText.textContent = res.data;
+  });
+};
 // DO NOT EDIT FUNCTION
 
 // CODE HERE
-sayHelloButton.addEventListener("click", sayHello)
+sayHelloButton.addEventListener("click", sayHello);
 
-
-// PROBLEM 5 
+// PROBLEM 5
 /*
     Now that we have attached a few event listeners why dont we try adding a request? 
     
@@ -78,20 +74,23 @@ sayHelloButton.addEventListener("click", sayHello)
     Use axios inside the ohMy function to make a GET request to 'http://localhost:3000/animals' 
     
     Handle the promise that's returned with a .then, which you should pass a callback function to. Inside the callback function, console.log the response's data (in the intermediate instructions we'll come back to this function and add HTML).
-*/ 
+*/
 
 const ohMy = () => {
-//     // YOUR CODE HERE
+  //     // YOUR CODE HERE
   axios
-    .get('http://localhost:3000/animals')
-    .then(response => {console.log(response.data)})
-    .catch(error => {console.log(error)})
-}
+    .get("http://localhost:3000/animals")
+    .then((response) => {
+      console.log(response.data);
+    })
+    .catch((error) => {
+      console.log(error);
+    });
+};
 
-document.getElementById('animals-button').addEventListener('click', ohMy)
+document.getElementById("animals-button").addEventListener("click", ohMy);
 
-
-// PROBLEM 6 
+// PROBLEM 6
 /*
     Now lets see if you can send a request param! inside repeatMyParam function below  make get request to 'http://localhost:3000/repeat/{SOMEPARAM}', but with a string instead of {SOMEPARAM}.  
 
@@ -105,20 +104,22 @@ document.getElementById('animals-button').addEventListener('click', ohMy)
 */
 
 const repeatMyParam = () => {
-    //YOUR CODE HERE
-    axios
-    .get('http://localhost:3000/repeat/{howdy pardner}')
-    .then(response => {console.log(response.data)})
-    .catch(error => {console.log(error)})
+  //YOUR CODE HERE
+  axios
+    .get("http://localhost:3000/repeat/{howdy pardner}")
+    .then((response) => {
+      let repeatElement = document.getElementById("repeat-text");
+      repeatElement.textContent = response.data;
+      repeatElement.style.display = "block";
+    })
+    .catch((error) => {
+      console.log(error);
+    });
+};
 
-    //Problem 7 Code
-    let repeatElement = document.getElementById("repeat-text")
-
-    repeatElement.textContent = response.data
-
-}
-
-document.getElementById("repeat-button").addEventListener("click", repeatMyParam)
+document
+  .getElementById("repeat-button")
+  .addEventListener("click", repeatMyParam);
 
 // PROBLEM 7
 /*
@@ -128,8 +129,6 @@ document.getElementById("repeat-button").addEventListener("click", repeatMyParam
 */
 
 // Code in the repeatMyParam function above
-
-
 
 // PROBLEM 8
 /*
@@ -141,9 +140,18 @@ document.getElementById("repeat-button").addEventListener("click", repeatMyParam
 */
 
 // CODE HERE
+function attachQuery() {
+  axios
+    .get("http://localhost:3000/query-test?cat=meow")
+    .then((response) => {
+      console.log(response.data);
+    })
+    .catch((error) => {
+      console.log(error);
+    });
+}
 
-
-
+document.getElementById("query-button").addEventListener("click", attachQuery);
 
 ////////////////
 //INTERMEDIATE//
@@ -158,7 +166,7 @@ document.getElementById("repeat-button").addEventListener("click", repeatMyParam
 
 // Code in the ohMy function in Problem 5
 
-// PROBLEM 10 
+// PROBLEM 10
 /*
     In the function that you wrote for Problem 8, change the URL to test a couple different scenarios. 
 
@@ -168,8 +176,6 @@ document.getElementById("repeat-button").addEventListener("click", repeatMyParam
 */
 
 // Edit code in Problem 8
-
-
 
 ////////////
 //ADVANCED//
@@ -194,4 +200,4 @@ document.getElementById("repeat-button").addEventListener("click", repeatMyParam
     Based on what we did earlier to display this type of data, write code that will display the response in your HTML document. 
 */
 
-// CODE HERE 
+//CODE HERE
